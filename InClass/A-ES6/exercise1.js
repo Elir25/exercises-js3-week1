@@ -7,28 +7,26 @@ const arrow = () => "es6 is awesome";
 console.log(arrow())
 
 //Use the es6 syntax for default parameter
-function defaultParameter(name = "sam") {
-  //var name = name || "sam";
-  return name;
-}
+const defaultParameter = (name = "sam") => name;
 console.log(defaultParameter())
 
 arr1 = ["hello ", "you"]
 arr2 = ["I'm ", "Eli"]
+
 // Use the spread operator to combine arr1 and arr2
-function combineArrays(arr1, arr2) {
-  //return arr1.concat(arr2);
-  const combineArr1And2 = [...arr1, ...arr2];
-  return combineArr1And2;
-}
-console.log(combineArrays(arr1, arr2))
+const combineArrays = (arr1, arr2) => [...arr1, ...arr2];
+  
+console.log(combineArrays(arr1, arr2));
 
 //use destructuring to return the object's cyf property
-function destructuring(obj) {
-  return obj.cyf;
+const destructuring = (obj) => {
+  //return obj.cyf;
+  return {cyf} = Obj;
 }
 
 // use template literal to return a string with the sum of a and b
-function templateString(a, b) {
-  return "The sum is equal to " + (a + b).toString();
+const templateString = (a, b) => {
+  //return "The sum is equal to " + (a + b).toString();
+  return `The sum is equal to ${(a + b).toString()}`;
 }
+console.log(templateString(10, 5))
