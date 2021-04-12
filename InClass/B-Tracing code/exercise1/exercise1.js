@@ -1,5 +1,5 @@
 const greetPeople = (people) => {
-  var greeting = "He";
+  let greeting = "He";
   greeting = greeting + "llo";
   greeting = greeting + " ";
 

@@ -1,18 +1,19 @@
-class Polygon {
+class Polygon {//object
   constructor(height, width) {
     this.name = "Polygon";
     this.height = height;
     this.width = width;
   }
   sayName() {
-    console.log('Hi, I am a ' + this.name);
+    //console.log('Hi, I am a ' + this.name);
+    console.log(`Hi, I am a ' ${this.name}`);
   }
 }
 
-let p = new Polygon('Polygon', 300, 400);
-p.sayName();
-console.log('The area of this polygon is ' + p.area);
+let p = new Polygon('Polygon', (300, 400));
 
+p.sayName();
+//console.log('The area of this polygon is ' + p.area);
 
 class Rectangle extends Polygon {
   constructor(height, width) {
