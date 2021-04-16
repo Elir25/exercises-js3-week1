@@ -5,21 +5,16 @@ const removeVowels = (word) => {
 
   characters.forEach(function(character) {
     if (
-      character === "s" ||//my
       character === "a" ||
-      character === "m" ||//my
       character === "o" ||
       character === "i" ||
       character === "e" ||
-      character === "u" ||
-      character === "l" //my
+      character === "u" 
     ) {
       result.push(character);
     } else {
-      result.push("_");
-      //result.splice(0, 1, "s");
-      //result.splice(2, 1, "m");
-      //result.splice(5, 1, "l");
+      //result.push("_");
+      result.push(character);
     }
   });
 
