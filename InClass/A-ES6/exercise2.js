@@ -1,4 +1,4 @@
-class Polygon {//object
+class Polygon {
   constructor(height, width) {
     this.name = "Polygon";
     this.height = height;
@@ -6,7 +6,7 @@ class Polygon {//object
   }
   sayName() {
     //console.log('Hi, I am a ' + this.name);
-    console.log(`Hi, I am a ' ${this.name}`);
+    console.log(`Hi, I am a ${this.name}`);
   }
 }
 
@@ -35,6 +35,35 @@ console.log('The area of this polygon is ' + r.area);
 
 //Create 2 new classes that extend from polygon: triangle and circle and log their names and areas
 
+class Triangle extends Polygon {
+  constructor(height, width) {
+    super(height, width);
+    this.name = "triangle";
+    this.sides = 3;
+  }
+  get area() {
+    return this.width * this.height / 2;
+  }
+
+  sayName() {
+    console.log('Hi I am a polygon and my name is ' + this.name + '.')
+  }
+}
+
+let t = new Triangle(5, 8);
+
+t.sayName()
+
+console.log('The area of this polygon is ' + t.area);
 
 
+class Square extends Rectangle {
+  constructor(width){
+    super(width, width);
+    this.name="Square";
+  }
+}
 
+let sq = new Square(4);
+sq.sayName();
+console.log(sq.area);

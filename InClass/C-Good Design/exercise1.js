@@ -39,34 +39,65 @@
    
    */
 
+function getSumOfIncomeTaxes(incomeTaxes){
 
-function myFunction(salary, taxCode, incomeTax1, incomeTax2, ownsCar) {
-  var totalIncomeTax = incomeTax1 + incomeTax2;
-  var studentLoan = (salary - 17775) * 0.09;
-  var originalSalary = salary;
-  var nationalInsurance = null;
+   let acc = 0;
+   for(let i =0; i< incomeTaxes.length; i++){
+      acc = acc + incomeTaxes[i];
+   }
+   return acc;
+}
+
+function calculateStudentLoan(salary) {
+const studentDeduction = 17775;
+const studentLoanRate = 0.9;
+let studentLoan = (salary - studentDeduction) * studentLoanRate;
+return studentLoan;
+}
+
+function calculateNationalInsurance(taxCode, salary) {
+   const Tax1150LRate = 0.1;
+   const TaxSLRate = 0.05;
+   const TaxDefaultRate = 0.08;
+   let nationalInsurance = null;
 
   if (taxCode === "1150L") {
-    nationalInsurance = salary * 0.1;
+    nationalInsurance = salary * Tax1150LRate;
   } else if (taxCode === "ST") {
-    nationalInsurance = salary * 0.05;
-  } else {
-    nationalInsurance = salary * 0.08;
+    nationalInsurance = salary * TaxSLRate;
+  } else nationalInsurance = salary * TaxDefaultRate;
+ 
+  return nationalInsurance;
+}
+
+//salary deductions function 
+function calculateNetSalary(salary, taxCode, incomeTaxes) {
+
+   //Calculate total income taxes
+   let totalIncomeTax = getSumOfIncomeTaxes(incomeTaxes);
+
+   //Calculate nationaInsurance
+   let nationalInsurance = calculateNationalInsurance(taxCode, salary);
+
+   //Calcula student Loan
+
+   let studentLoan = calculateStudentLoan(salary);
+   //calculate the salary after deductions 
+
+  const deductions = [nationalInsurance, totalIncomeTax, studentLoan];
+  let netSalary = salary; 
+  for (let i = 0; i < deductions.length; i ++) {
+   netSalary = netSalary - deductions[i];
   }
 
-  var deductions = [nationalInsurance, totalIncomeTax, studentLoan];
-
-  salary = salary - deductions[0];
-  salary = salary - deductions[1];
-  salary = salary - deductions[2];
 
   return (
-    "Your gross income is £" +
-    originalSalary.toString() +
-    " and your net income is £" +
+    "Your gross income is ï¿½" +
     salary.toString() +
+    " and your net income is ï¿½" +
+    netSalary.toString() +
     "."
   );
 }
 
-console.log(myFunction(28000, "1150L", 1000, 580, false));
+console.log(calculateNetSalary(28000, "1150L", 1000, 580, false));
